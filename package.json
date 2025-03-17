@@ -3,20 +3,31 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-     "dev": "nodemon --watch backend/src --exec \"node --no-warnings=ExperimentalWarning --loader ts-node/esm backend/src/index.ts\""
-  },
   "type": "module",
+  "scripts": {
+    "start2": "ts-node src/index.ts --other-option",
+    "dev": "nodemon --no-warnings=ExperimentalWarning --loader ts-node/esm backend/src/index.ts",
+    "dev2": "nodemon backend/dist/src/index.js",
+    "build": "tsc",
+    "start": "node backend/dist/src/index.js",
+    "migrate": "npx sequelize-cli db:migrate"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/express": "^5.0.0",
-    "nodemon": "^3.1.9",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.20",
+    "nodemon": "^3.1.0",
+    "sequelize-cli": "^6.6.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.2"
+    "typescript": "^5.3.3"
   },
   "dependencies": {
-    "express": "^4.21.2"
+    "dotenv": "^16.4.7",
+    "express": "^4.18.2",
+    "pg": "^8.11.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.1"
   }
 }

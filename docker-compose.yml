@@ -1,0 +1,26 @@
+services:
+  basic-blog-app:
+    build: .
+    container_name: basic-blog-app
+    environment:
+      - PG_USER=oliverDev
+      - PG_PASSWORD=123456
+      - PG_HOST=basic-blog-app-db
+    depends_on:
+      - basic-blog-app-db
+    ports:
+      - 6000:6000
+
+  basic-blog-app-db:
+    container_name: basic-blog-db
+    image: postgres:latest
+    ports:
+      - 5252:5432
+    environment:
+      - POSTGRES_DB=basic-blog-database
+      - POSTGRES_USER=oliverDev
+      - POSTGRES_PASSWORD=123456
+    volumes:
+      - basic-blog-data:/var/lib/postgresql/data
+volumes:
+  basic-blog-db-data: {}
